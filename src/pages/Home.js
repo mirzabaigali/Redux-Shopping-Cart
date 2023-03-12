@@ -45,14 +45,7 @@ export const Home = () => {
     <main>
       <section className="products">
         {products.map((item) => {
-          return (
-            <ProductCard
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              image={item.image}
-            />
-          );
+          return <ProductCard key={item.id} product={item} />;
         })}
       </section>
     </main>

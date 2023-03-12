@@ -1,7 +1,8 @@
-import { useTitle } from "../customHooks/useTitle";
 import "./CartCard.css";
+import { remove } from "../store/cartSlice";
+import { useDispatch } from "react-redux";
 export const CartCard = ({ product }) => {
-  useTitle("Cart");
+  const dispatch = useDispatch();
   let { name, price, image } = product;
 
   return (
@@ -9,7 +10,7 @@ export const CartCard = ({ product }) => {
       <img src={image} alt={name} />
       <p className="productName">{name}</p>
       <p className="productPrice">{price}</p>
-      <button>Remove</button>
+      <button onClick={() => dispatch(remove(product))}>Remove</button>
     </div>
   );
 };

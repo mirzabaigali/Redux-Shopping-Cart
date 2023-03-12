@@ -1,13 +1,16 @@
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assests/logo192.png";
 import "./Header.css";
 
 export const Header = () => {
+  const products = useSelector((state) => state.cartSate.cartList);
+
   return (
     <header>
       <Link to="/" className="logo">
         <img src={logo} alt="logo" />
-        <span>Shopping Cart</span>
+        <span>REDUX CART</span>
       </Link>
       <nav className="navigation">
         <NavLink to="/" className="link">
@@ -18,7 +21,7 @@ export const Header = () => {
         </NavLink>
       </nav>
       <Link to="/cart" className="items">
-        <span>cart: 2</span>
+        <span>cart:{products.length}</span>
       </Link>
     </header>
   );
